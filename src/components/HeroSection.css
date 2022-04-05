@@ -1,0 +1,148 @@
+@font-face {
+  font-family: Squarix;
+  src: url("../fonts/SQUARIX.ttf");
+}
+
+.hero-container {
+  background-image: url("../img/BG.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 100%;
+}
+.logo {
+  text-align: -webkit-center;
+  margin-top: 1rem;
+}
+.logoImg {
+  width: 12rem;
+}
+.intro1,
+.intro2 {
+  font-family: "Squarix";
+  font-style: normal;
+  font-weight: 400;
+  line-height: 116.02%;
+  text-align: center;
+  letter-spacing: 0.035em;
+  color: #c7c7c7;
+  text-shadow: 0px 4px 15px rgba(0, 0, 0, 0.6);
+}
+.intro1 {
+  font-size: 45px;
+}
+.intro2 {
+  font-size: 55px;
+}
+.introHead {
+  text-align: center;
+  margin-top: 3rem;
+}
+.tokenminted1 {
+  font-family: "Squarix";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 38px;
+  line-height: 116.02%;
+  letter-spacing: 0.065em;
+  color: #ffffff;
+  
+  text-align: center;
+  text-shadow: 0px 4px 15px rgba(0, 0, 0, 0.6);
+}
+.tokenminted {
+  font-family: "Squarix";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 38px;
+  line-height: 116.02%;
+  letter-spacing: 0.065em;
+  color: #ffffff;
+  padding: 0rem 2rem 2rem 2rem;
+  text-align: center;
+  text-shadow: 0px 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+.containerBox {
+  margin-top: 2rem;
+}
+.quantityButton {
+  text-align: -webkit-center;
+  margin-top: 2rem;
+}
+
+.borderColorBox {
+  border: 3px solid #2c9b1a;
+}
+.numberQuantity {
+  border-left: 3px solid #2c9b1a !important;
+  border-right: 3px solid #2c9b1a !important;
+  color: white !important;
+}
+
+.add,
+.substract {
+  color: white !important;
+}
+
+.mintButton,
+.walletButton {
+  text-align: -webkit-center;
+  margin-top: 2rem;
+}
+.mint {
+  font-family: "Squarix" !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  font-size: 40px !important;
+  line-height: 116.02% !important;
+  text-align: center !important;
+  letter-spacing: 0.065em !important;
+  color: #ffffff !important;
+  border: 3px solid #2c9b1a !important;
+  box-sizing: border-box !important;
+  border-radius: 10px !important;
+}
+.wallet {
+  font-family: "Squarix" !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  font-size: 25px !important;
+  line-height: 116.02% !important;
+  text-align: center !important;
+  letter-spacing: 0.065em !important;
+  color: #ffffff !important;
+  border: 3px solid #2c9b1a !important;
+  box-sizing: border-box !important;
+  border-radius: 10px !important;
+  background: none !important;
+  padding: 0.2rem 0.5rem;
+}
+
+.dis-txt {
+  font-family: "Squarix";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 116.02%;
+  letter-spacing: 0.065em;
+  color: #ffffff;
+  text-shadow: 0px 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+.disclaimer {
+  text-align: -webkit-center;
+  margin-top: 2rem;
+}
+
+.imgBox {
+  text-align: -webkit-center;
+}
+
+.img-footer {
+  width: 3rem;
+}
+
+.footer {
+  margin-top: 2rem;
+  padding: 0rem 40%;
+}
