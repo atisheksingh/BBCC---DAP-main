@@ -31,6 +31,31 @@ function HeroSection() {
   useEffect(()=>{
     seta(((0.1)*slotvalue).toString())
   })
+
+  const checkforwhitelist = async ( useraddress) =>{
+    try { if(useraddress ===0){
+      alert(" get your metamask bitch");}
+     else{ 
+       
+    let contractAddress = "0x0c60447Ce83877C19c52B8E876D194D00f68b30e";
+     const provider = new ethers.providers.Web3Provider(window.ethereum);
+     const signer = provider.getSigner();
+     const bc = new ethers.Contract(contractAddress, bbcc, signer);
+     let bb= await bc.whiteListVIPMint(t1.address)
+     let v1 = await bc.whiteListVIPMintLimit(t1.address)
+
+      let cc = await bc.whiteListPreMint(t3.address)
+      let v2 = await bc.whiteListPreMintLimit(t3.address)
+
+      let dd = await bc.normalWhiteListing(t2.address)
+      let v3 = await bc.normalWhiteListingLimit(t2.address)
+      }
+     
+
+    }catch(error){
+      console.log(error)
+    }
+  };
   
   const connetMetMask = async () => {
     try {
@@ -48,6 +73,7 @@ function HeroSection() {
       const BBCCContract = new ethers.Contract(contractAddress, bbcc, signer);
       const totalsuppuly = await BBCCContract.totalSupply()
       // funtion for checking to whitelist 
+
       console.log(totalsuppuly.toString());
       setts(totalsuppuly.toString());
       console.log("current account",accounts)
