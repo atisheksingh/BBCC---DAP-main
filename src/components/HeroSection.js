@@ -41,14 +41,16 @@ function HeroSection() {
       console.log("chainid", chainID1);
       setChainID(chainID1);
       let contractAddress = "0x0c60447Ce83877C19c52B8E876D194D00f68b30e";
-//       const eth_NODE_URL = "YOUR MORALIS BSC NODE URL HERE";
-// const provider = new ethers.providers.JsonRpcProvider(eth_NODE_URL);
+      const eth_NODE_URL = "https://speedy-nodes-nyc.moralis.io/f5f29ce1892ca85c041e30b7/eth/rinkeby";
+      const provider = new ethers.providers.JsonRpcProvider(eth_NODE_URL);
 
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
+     // const provider = new ethers.providers.Web3Provider(window.ethereum);
       const signer = provider.getSigner();
       const BBCCContract = new ethers.Contract(contractAddress, bbcc, signer);
       const totalsuppuly = await BBCCContract.totalSupply();
       // funtion for checking to whitelist
+
+
       let whiteListVIPMint = await BBCCContract.whiteListVIPMint(accounts);
       let whiteListVIPMintLimit = await BBCCContract.whiteListVIPMintLimit(
         accounts
