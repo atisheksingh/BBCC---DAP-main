@@ -51,7 +51,6 @@ function HeroSection() {
       const totalsuppuly = await BBCCContract.totalSupply();
       // funtion for checking to whitelist
 
-
       let whiteListVIPMint = await BBCCContract.whiteListVIPMint(accounts);
       let whiteListVIPMintLimit = await BBCCContract.whiteListVIPMintLimit(
         accounts
@@ -71,9 +70,12 @@ function HeroSection() {
       if (whiteListVIPMint) await setwhiteListType("whiteListVIPMint");
       if (whiteListPreMint) await setwhiteListType("whiteListPreMint");
       if (normalWhiteListing) await setwhiteListType("normalWhiteListing");
-      if (whiteListVIPMint) console.log("whiteListVIPMint",whiteListVIPMintLimit.toString());
-      if (whiteListPreMint) console.log("whiteListPreMint",whiteListPreMintLimit.toString());
-      if (normalWhiteListing) console.log("normalWhiteListing",normalWhiteListingLimit.toString());
+      if (whiteListVIPMint)
+        console.log("whiteListVIPMint", whiteListVIPMintLimit.toString());
+      if (whiteListPreMint)
+        console.log("whiteListPreMint", whiteListPreMintLimit.toString());
+      if (normalWhiteListing)
+        console.log("normalWhiteListing", normalWhiteListingLimit.toString());
       // : setwhiteListType();
 
       //console.log("whiteListType:-", whiteListType);
@@ -100,28 +102,31 @@ function HeroSection() {
         Tx = await BBCCContract.mintSuperCar(_slotID, {
           value: ethers.utils.parseEther(`${0.06 * _slotID}`),
         });
-      }
-      if (whiteListType === "whiteListPreMint") {
-        Tx = await BBCCContract.mintSuperCar(_slotID, {
-          value: ethers.utils.parseEther(`${0.05 * _slotID}`),
-        });
-      }
-      if (whiteListType === "normalWhiteListing") {
-        Tx = await BBCCContract.mintSuperCar(_slotID, {
-          value: ethers.utils.parseEther(`${0.1 * _slotID}`),
-        });
-      }
-      if (whiteListType === "") {
-        Tx = await BBCCContract.mintSuperCar(_slotID, {
-          value: ethers.utils.parseEther(`${0.1 * _slotID}`),
-        });
+      } else {
+        if (whiteListType === "whiteListPreMint") {
+          Tx = await BBCCContract.mintSuperCar(_slotID, {
+            value: ethers.utils.parseEther(`${0.05 * _slotID}`),
+          });
+        } else {
+          if (whiteListType === "normalWhiteListing") {
+            Tx = await BBCCContract.mintSuperCar(_slotID, {
+              value: ethers.utils.parseEther(`${0.1 * _slotID}`),
+            });
+          } else {
+            if (whiteListType === "") {
+              Tx = await BBCCContract.mintSuperCar(_slotID, {
+                value: ethers.utils.parseEther(`${0.1 * _slotID}`),
+              });
+            }
+          }
+        }
       }
       console.log("tx mintied:- ", Tx.hash);
       alert(Tx.hash);
       Tx.wait();
       console.log(Tx);
     } catch (error) {
-      alert(error)
+      alert(error);
     }
   };
 
