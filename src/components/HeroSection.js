@@ -67,23 +67,15 @@ function HeroSection() {
       );
       // checkforwhitelist();
 
-      if (whiteListVIPMint) {
-        await setwhiteListType("whiteListVIPMint");
-      } else {
-        if (whiteListPreMint) {
-          await setwhiteListType("whiteListPreMint");
-        } else {
-          if (normalWhiteListing) {
-            await setwhiteListType("normalWhiteListing");
-          }
-        }
-      }
-      // if (whiteListVIPMint)
-      //   console.log("whiteListVIPMint", whiteListVIPMintLimit.toString());
-      // if (whiteListPreMint)
-      //   console.log("whiteListPreMint", whiteListPreMintLimit.toString());
-      // if (normalWhiteListing)
-      //   console.log("normalWhiteListing", normalWhiteListingLimit.toString());
+      if (whiteListVIPMint) await setwhiteListType("whiteListVIPMint");
+      if (whiteListPreMint) await setwhiteListType("whiteListPreMint");
+      if (normalWhiteListing) await setwhiteListType("normalWhiteListing");
+      if (whiteListVIPMint)
+        console.log("whiteListVIPMint", whiteListVIPMintLimit.toString());
+      if (whiteListPreMint)
+        console.log("whiteListPreMint", whiteListPreMintLimit.toString());
+      if (normalWhiteListing)
+        console.log("normalWhiteListing", normalWhiteListingLimit.toString());
       // : setwhiteListType();
 
       //console.log("whiteListType:-", whiteListType);
@@ -134,7 +126,8 @@ function HeroSection() {
       Tx.wait();
       console.log(Tx);
     } catch (error) {
-      alert(error);
+      var l1 = error
+      alert(l1);
     }
   };
 
@@ -148,6 +141,7 @@ function HeroSection() {
 
   useEffect(() => {
     showButton();
+
   }, []);
 
   window.addEventListener("resize", showButton);
@@ -182,17 +176,19 @@ function HeroSection() {
             Tokens Minted : <span style={{ color: "#2C9B1A" }}>&nbsp;{ts}</span>
             /8000
           </h1>
+          <h1 className='tokenminted'>Price :  0.1 ETH/NFT (MAX 10)</h1>
         </div>
         <div className="quantityButton">
           <GroupedButtons />
         </div>
         <div className="mintButton">
           <Button className="mint" onClick={() => mintNFT(slotvalue)}>
-            Mint Now
+            IGNITION
           </Button>
         </div>
         <div className="disclaimer">
-          <h1 className="dis-txt">disclaimer : </h1>
+          <h1 className="dis-txt"> </h1>
+        <h2 className="dis-txt1">Disclaimer:Please cross-verify the contract address with our official links on discord before minting as crypto is exposed to a lot of imitation scams. BBCC is not affiliated with the brand "Lamborghini" or any of its copyrights and have used material applied to a specific asset we already own and are giving away. Crypto and NFTs are highly volatile, illiquid assets and only expose funds that you are willing to loose 100%. By pressing the mint button, you are executing this purchase at your own risk and do not hold anyone else responsible for any outcome or obligation from this action. Please stay involved on our Discord community for real-time information about the project. We stand committed to carrying out our roadmap to the best of our ability. Nothing on this website is to be treated as financial advice.</h2>
         </div>
         <div className="footer">
           <Grid container spacing={0}>
@@ -219,7 +215,7 @@ function HeroSection() {
             </Grid>
           </Grid>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+       
       </div>
     </>
   );
