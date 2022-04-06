@@ -129,8 +129,18 @@
   text-shadow: 0px 4px 15px rgba(0, 0, 0, 0.6);
 }
 
+.dis-txt1 {
+  font-family: "Squarix";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 116.02%;
+  letter-spacing: 0.065em;
+  color: #ffffff;
+  text-shadow: 0px 4px 15px rgba(0, 0, 0, 0.6);
+}
 .disclaimer {
-  text-align: -webkit-center;
+  text-align: -webkit-left;
   margin-top: 2rem;
 }
 
