@@ -36,15 +36,17 @@ function HeroSection() {
       const [accounts] = await window.ethereum.request({
         method: "eth_requestAccounts",
       });
-      setAccount(accounts);
+      setAccount(accounts); 
       const chainID1 = await window.ethereum.request({ method: "eth_chainId" });
       console.log("chainid", chainID1);
       setChainID(chainID1);
       let contractAddress = "0x0c60447Ce83877C19c52B8E876D194D00f68b30e";
 
-      //const eth_NODE_URL = "https://speedy-nodes-nyc.moralis.io/f5f29ce1892ca85c041e30b7/eth/rinkeby";
-      //const provider = new ethers.providers.JsonRpcProvider(eth_NODE_URL);
-
+      // const eth_NODE_URL = "https://speedy-nodes-nyc.moralis.io/f5f29ce1892ca85c041e30b7/eth/rinkeby";
+      // const provider = new ethers.providers.JsonRpcProvider(eth_NODE_URL);
+      // provider.getBlockNumber().then((result)=>{
+      //   console.log("Current Block Number: "+ result);
+      // })
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const signer = provider.getSigner();
       const BBCCContract = new ethers.Contract(contractAddress, bbcc, signer);
@@ -68,22 +70,22 @@ function HeroSection() {
       // checkforwhitelist();
 
       if (whiteListVIPMint) {
-        await setwhiteListType("whiteListVIPMint");
+        setwhiteListType("whiteListVIPMint");
       } else {
         if (whiteListPreMint) {
-          await setwhiteListType("whiteListPreMint");
+          setwhiteListType("whiteListPreMint");
         } else {
           if (normalWhiteListing) {
-            await setwhiteListType("normalWhiteListing");
+            setwhiteListType("normalWhiteListing");
           }
         }
       }
-      // if (whiteListVIPMint)
-      //   console.log("whiteListVIPMint", whiteListVIPMintLimit.toString());
-      // if (whiteListPreMint)
-      //   console.log("whiteListPreMint", whiteListPreMintLimit.toString());
-      // if (normalWhiteListing)
-      //   console.log("normalWhiteListing", normalWhiteListingLimit.toString());
+      if (whiteListVIPMint)
+        console.log("whiteListVIPMint", whiteListVIPMintLimit.toString());
+      if (whiteListPreMint)
+        console.log("whiteListPreMint", whiteListPreMintLimit.toString());
+      if (normalWhiteListing)
+        console.log("normalWhiteListing", normalWhiteListingLimit.toString());
       // : setwhiteListType();
 
       //console.log("whiteListType:-", whiteListType);
