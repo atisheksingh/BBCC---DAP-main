@@ -24,7 +24,7 @@ function HeroSection() {
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
   const [ts, setts] = useState("");
-  const [whiteListType, setwhiteListType] = useState("n");
+  const [whiteListType, setwhiteListType] = useState("");
 
   useEffect(() => {
     seta((0.1 * slotvalue).toString());
@@ -41,11 +41,16 @@ function HeroSection() {
       console.log("chainid", chainID1);
       setChainID(chainID1);
       let contractAddress = "0x0c60447Ce83877C19c52B8E876D194D00f68b30e";
+
+      //const eth_NODE_URL = "https://speedy-nodes-nyc.moralis.io/f5f29ce1892ca85c041e30b7/eth/rinkeby";
+      //const provider = new ethers.providers.JsonRpcProvider(eth_NODE_URL);
+
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const signer = provider.getSigner();
       const BBCCContract = new ethers.Contract(contractAddress, bbcc, signer);
       const totalsuppuly = await BBCCContract.totalSupply();
       // funtion for checking to whitelist
+
       let whiteListVIPMint = await BBCCContract.whiteListVIPMint(accounts);
       let whiteListVIPMintLimit = await BBCCContract.whiteListVIPMintLimit(
         accounts
@@ -65,18 +70,21 @@ function HeroSection() {
       if (whiteListVIPMint) await setwhiteListType("whiteListVIPMint");
       if (whiteListPreMint) await setwhiteListType("whiteListPreMint");
       if (normalWhiteListing) await setwhiteListType("normalWhiteListing");
-      if (whiteListVIPMint) console.log("whiteListVIPMint");
-      if (whiteListPreMint) console.log("whiteListPreMint");
-      if (normalWhiteListing) console.log("normalWhiteListing");
-      // : setwhiteListType("FUCK");
+      if (whiteListVIPMint)
+        console.log("whiteListVIPMint", whiteListVIPMintLimit.toString());
+      if (whiteListPreMint)
+        console.log("whiteListPreMint", whiteListPreMintLimit.toString());
+      if (normalWhiteListing)
+        console.log("normalWhiteListing", normalWhiteListingLimit.toString());
+      // : setwhiteListType();
 
-      console.log("whiteListType:-", whiteListType);
+      //console.log("whiteListType:-", whiteListType);
 
       console.log(totalsuppuly.toString());
       setts(totalsuppuly.toString());
       console.log("current account", accounts);
     } catch (error) {
-      console.log(error);
+      alert(error);
     }
   };
 
@@ -94,27 +102,32 @@ function HeroSection() {
         Tx = await BBCCContract.mintSuperCar(_slotID, {
           value: ethers.utils.parseEther(`${0.06 * _slotID}`),
         });
-      }
-      if (whiteListType === "whiteListPreMint") {
-        Tx = await BBCCContract.mintSuperCar(_slotID, {
-          value: ethers.utils.parseEther(`${0.05 * _slotID}`),
-        });
-      }
-      if (whiteListType === "normalWhiteListing") {
-        Tx = await BBCCContract.mintSuperCar(_slotID, {
-          value: ethers.utils.parseEther(`${0.1 * _slotID}`),
-        });
-      }
-      if (whiteListType === "") {
-        Tx = await BBCCContract.mintSuperCar(_slotID, {
-          value: ethers.utils.parseEther(`${0.1 * _slotID}`),
-        });
+      } else {
+        if (whiteListType === "whiteListPreMint") {
+          Tx = await BBCCContract.mintSuperCar(_slotID, {
+            value: ethers.utils.parseEther(`${0.05 * _slotID}`),
+          });
+        } else {
+          if (whiteListType === "normalWhiteListing") {
+            Tx = await BBCCContract.mintSuperCar(_slotID, {
+              value: ethers.utils.parseEther(`${0.1 * _slotID}`),
+            });
+          } else {
+            if (whiteListType === "") {
+              Tx = await BBCCContract.mintSuperCar(_slotID, {
+                value: ethers.utils.parseEther(`${0.1 * _slotID}`),
+              });
+            }
+          }
+        }
       }
       console.log("tx mintied:- ", Tx.hash);
       alert(Tx.hash);
       Tx.wait();
       console.log(Tx);
-    } catch (error) {}
+    } catch (error) {
+      alert(error);
+    }
   };
 
   const showButton = () => {

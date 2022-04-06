@@ -2,7 +2,7 @@
     "name": "boit-react",
     "version": "0.1.0",
     "private": false,
-    "homepage": "https://boittoken.github.io/BoitCoin/",
+    "homepage": "https://boittoken.github.io/BBCC-NFT-SOLIDITY/",
     "dependencies": {
         "@emotion/react": "^11.8.1",
         "@emotion/styled": "latest",
