@@ -67,15 +67,23 @@ function HeroSection() {
       );
       // checkforwhitelist();
 
-      if (whiteListVIPMint) await setwhiteListType("whiteListVIPMint");
-      if (whiteListPreMint) await setwhiteListType("whiteListPreMint");
-      if (normalWhiteListing) await setwhiteListType("normalWhiteListing");
-      if (whiteListVIPMint)
-        console.log("whiteListVIPMint", whiteListVIPMintLimit.toString());
-      if (whiteListPreMint)
-        console.log("whiteListPreMint", whiteListPreMintLimit.toString());
-      if (normalWhiteListing)
-        console.log("normalWhiteListing", normalWhiteListingLimit.toString());
+      if (whiteListVIPMint) {
+        await setwhiteListType("whiteListVIPMint");
+      } else {
+        if (whiteListPreMint) {
+          await setwhiteListType("whiteListPreMint");
+        } else {
+          if (normalWhiteListing) {
+            await setwhiteListType("normalWhiteListing");
+          }
+        }
+      }
+      // if (whiteListVIPMint)
+      //   console.log("whiteListVIPMint", whiteListVIPMintLimit.toString());
+      // if (whiteListPreMint)
+      //   console.log("whiteListPreMint", whiteListPreMintLimit.toString());
+      // if (normalWhiteListing)
+      //   console.log("normalWhiteListing", normalWhiteListingLimit.toString());
       // : setwhiteListType();
 
       //console.log("whiteListType:-", whiteListType);
