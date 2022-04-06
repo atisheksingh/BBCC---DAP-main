@@ -30,7 +30,7 @@ class GroupedButtons extends React.Component {
 
     return (
       <div>
-      <h1 className='tokenminted'>Price : 0.1 ETH per SuperCar</h1>{h}
+      {h}
       <ButtonGroup size="small" aria-label="small outlined button group" className="borderColorBox">
         <Button onClick={this.handleDecrement} className='add'>-</Button>
         {displayCounter && <Button disabled className="numberQuantity">{this.state.counter}</Button>}
