@@ -72,18 +72,13 @@ function HeroSection() {
       if (whiteListVIPMint) {
         setwhiteListType("whiteListVIPMint");
       } else {
-        if (whiteListPreMint) {
-          setwhiteListType("whiteListPreMint");
-        } else {
           if (normalWhiteListing) {
             setwhiteListType("normalWhiteListing");
           }
-        }
+        
       }
       if (whiteListVIPMint)
         console.log("whiteListVIPMint", whiteListVIPMintLimit.toString());
-      if (whiteListPreMint)
-        console.log("whiteListPreMint", whiteListPreMintLimit.toString());
       if (normalWhiteListing)
         console.log("normalWhiteListing", normalWhiteListingLimit.toString());
       // : setwhiteListType();
@@ -113,11 +108,6 @@ function HeroSection() {
           value: ethers.utils.parseEther(`${0.06 * _slotID}`),
         });
       } else {
-        if (whiteListType === "whiteListPreMint") {
-          Tx = await BBCCContract.mintSuperCar(_slotID, {
-            value: ethers.utils.parseEther(`${0.05 * _slotID}`),
-          });
-        } else {
           if (whiteListType === "normalWhiteListing") {
             Tx = await BBCCContract.mintSuperCar(_slotID, {
               value: ethers.utils.parseEther(`${0.1 * _slotID}`),
@@ -130,7 +120,7 @@ function HeroSection() {
             }
           }
         }
-      }
+      
       console.log("tx mintied:- ", Tx.hash);
       alert(Tx.hash);
       Tx.wait();

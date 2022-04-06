@@ -5,7 +5,6 @@ import './HeroSection.css';
 
 
 let slotvalue = 1;
-let h=0.1;
 
 class GroupedButtons extends React.Component {
   state = { counter: 1 };
@@ -13,15 +12,10 @@ class GroupedButtons extends React.Component {
   
   handleIncrement = () => {
     this.setState((state) => ({ counter: Math.min(state.counter + 1, 10) }));
-    h = this.state.counter*0.1;
-    console.log(h);
   };
   
   handleDecrement = () => {
     this.setState((state) => ({ counter: Math.max(state.counter - 1, 1) }));
-    h = this.state.counter*0.1;
-    console.log(this.state.counter);
-    console.log(h);
 
   };
   render() {
@@ -30,7 +24,6 @@ class GroupedButtons extends React.Component {
 
     return (
       <div>
-      {h}
       <ButtonGroup size="small" aria-label="small outlined button group" className="borderColorBox">
         <Button onClick={this.handleDecrement} className='add'>-</Button>
         {displayCounter && <Button disabled className="numberQuantity">{this.state.counter}</Button>}
